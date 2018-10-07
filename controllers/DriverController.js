@@ -3,7 +3,7 @@ const JWT = require('jsonwebtoken');
 const createError = require('http-errors');
 const randomstring = require('randomstring');
 
-const User = require('../models/User');
+const User = require('../models/Driver');
 const Token = require('../models/Token');
 
 const UserController = {

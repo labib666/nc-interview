@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
 
-var UserSchema = new mongoose.Schema({  
+var DriverSchema = new mongoose.Schema({  
     name: String,
     username: {
         type: String,
@@ -16,12 +16,12 @@ var UserSchema = new mongoose.Schema({
     password: String
 });
 
-UserSchema.index({
+DriverSchema.index({
     name: 'text',
     username: 'text',
     email: 'text'
 });
 
-UserSchema.plugin(timestamps);
+DriverSchema.plugin(timestamps);
 
-module.exports = mongoose.model('User', UserSchema, 'users');
+module.exports = mongoose.model('User', DriverSchema, 'users');

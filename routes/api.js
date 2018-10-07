@@ -3,9 +3,9 @@ var router = express.Router();
 const createError = require('http-errors');
 
 const AC = require('../controllers/AuthController');
-const UC = require('../controllers/UserController');
+const DC = require('../controllers/DriverController');
 
-const userRouter = require('./userRouter');
+const driverRouter = require('./driverRouter');
 
 const HttpNotFound = (req, res, next) => {
     return next(createError(404, 'Not Found'));
@@ -19,12 +19,12 @@ router.get('/', function(req, res) {
 });
 
 // authentication
-router.post('/register', AC.loggedOut, UC.register);
-router.post('/login', AC.loggedOut, UC.login);
+router.post('/register', AC.loggedOut, DC.register);
+router.post('/login', AC.loggedOut, DC.login);
 
 // request from logged-in user
-router.post('/logout', AC.loggedIn, UC.logout);
-router.use('/users', AC.loggedIn, userRouter);
+router.post('/logout', AC.loggedIn, DC.logout);
+router.use('/drivers', AC.loggedIn, driverRouter);
 
 // could not find a good route. httpnotfound
 router.use(HttpNotFound);
