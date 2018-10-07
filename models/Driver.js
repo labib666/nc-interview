@@ -2,24 +2,32 @@ var mongoose = require('mongoose');
 var timestamps = require('mongoose-timestamp');
 
 var DriverSchema = new mongoose.Schema({  
-    name: String,
     username: {
+        type: String
+    },
+    phone: {
         type: String,
         unique: true,
         dropDups: true
     },
-    email: {
-        type: String,
-        unique: true,
-        dropDups: true
+    fair_per_kilo: Number,
+    total_kilo_driven: Number,
+    Cartype: Number,
+    Carnumber: String,
+    No_of_passengers: Number,
+    CurrentLocation: {
+        type: Number
     },
-    password: String
+    No_of_times_fined: Number,
+    Sum_of_fines: Number,
+    Rating: Number
 });
 
 DriverSchema.index({
     name: 'text',
     username: 'text',
-    email: 'text'
+    email: 'text',
+    CurrentLocation: '2dsphere'
 });
 
 DriverSchema.plugin(timestamps);
